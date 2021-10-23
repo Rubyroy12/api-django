@@ -18,11 +18,11 @@
             {% endfor %}
         </ul> -->
     </div>
-    <h2>Covid-19 Summary</h2>
+    <h2>Sports odds</h2>
     <hr>
     <ul>
-        {% for data in summary %}
-        <li>{{data.Global.NewConfirmed}}</li>
+        {% for data in data %}
+        <li>{{data.key}}</li>
         {% endfor %}
     </ul>
 
