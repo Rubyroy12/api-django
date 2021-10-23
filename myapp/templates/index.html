@@ -2,73 +2,115 @@
 {% load bootstrap4%}
 {% load static%}
 {% block content%}
+
+
 <div class="container-fluid">
 
-    <h2>Covid-19 Countries</h2>
+    <!-- <h2>Covid-19 Countries</h2>
     <hr>
     <ul>
-        <!-- {% for request in countries %}
+        {% for request in countries %}
             <li>{{request.Country}} - {{request.Slug}}</li>
-            {% endfor %} -->
-    </ul>
-    <h2>Covid-19 Summary</h2>
+            {% endfor %}
+    </ul> -->
+    <h2 class="text-warning">Covid-19 Summary</h2>
     <hr>
-    <h3>Global summary <span>{{results.Date | date  }}</span></h3>
+    <h3>Global summary as at <span class="text-warning">{{global_results.Date  }}</span></h3>
 
-    
+
     <div class="row">
         <div class="card col m-2">
             <div class="card-body">
-                <h5 class="card-title">{{results.NewConfirmed}}</h5>
+                <h5 class="card-title text-success ">{{global_results.NewConfirmed}}</h5>
                 <p class="card-text">New Confirmed cases</p>
-                <a href="#" class="btn btn-primary"></a>
             </div>
         </div>
         <div class="card col m-2">
             <div class="card-body">
-                <h5 class="card-title">{{results.TotalConfirmed}}</h5>
+                <h5 class="card-title text-success">{{global_results.TotalConfirmed}}</h5>
                 <p class="card-text">TotalConfirmed</p>
-                <a href="#" class="btn btn-primary"></a>
             </div>
         </div>
         <div class="card col m-2">
             <div class="card-body">
-                <h5 class="card-title">{{results.NewDeaths}}</h5>
+                <h5 class="card-title text-success">{{global_results.NewDeaths}}</h5>
                 <p class="card-text">NewDeaths</p>
-                <a href="#" class="btn btn-primary"></a>
             </div>
         </div>
         <div class="card col m-2">
             <div class="card-body">
-                <h5 class="card-title">{{results.TotalDeaths}}</h5>
+                <h5 class="card-title text-success">{{global_results.TotalDeaths}}</h5>
                 <p class="card-text">TotalDeaths</p>
-                <a href="#" class="btn btn-primary"></a>
-            </div>
-        </div> 
-        <div class="card col m-2">
-            <div class="card-body">
-                <h5 class="card-title">{{results.NewRecovered}}</h5>
-                <p class="card-text">NewRecovered</p>
-                <a href="#" class="btn btn-primary"></a>
             </div>
         </div>
         <div class="card col m-2">
             <div class="card-body">
-                <h5 class="card-title">{{results.TotalRecovered}}</h5>
+                <h5 class="card-title text-success">{{global_results.NewRecovered}}</h5>
+                <p class="card-text">NewRecovered</p>
+            </div>
+        </div>
+        <div class="card col m-2">
+            <div class="card-body">
+                <h5 class="card-title text-success">{{global_results.TotalRecovered}}</h5>
                 <p class="card-text">TotalRecovered </p>
-                <a href="#" class="btn btn-primary"></a>
             </div>
         </div>
     </div>
 
 
-    <h2>Covid-19 Routes Response</h2>
-    <hr>
-    <ul>
-        {% for response in response %}
-        <li>{{response.countriesRoute}}</li>
-        {% endfor %}
-    </ul>
+    <h2 class="text-warning">View Results based on countries
+</div>
+<hr>
+<div class="container">
+    <div class="row">
+        <!-- {% for response in country_results %}
+        <div class="card col-md-3 m-2">
+            <div class="card-body">
+                <h5 class="card-title text-success">{{response.Country}}</h5>
+                <hr>
+                <ul>
+                    <li class="card-text">NewConfirmed =<span class="text-info">{{response.NewConfirmed}}</span></li>
+                    <li class="card-text">Total Confirmed = <span
+                            class="text-success">{{response.TotalConfirmed}}</span></li>
+                    <li class="card-text">TotalDeaths =<span class="text-danger">{{response.TotalDeaths}}</span></li>
+                    <li class="card-text">TotalRecovered =<span class="text-warning">{{response.TotalRecovered}}</span>
+                    </li>
+
+                </ul>
+
+            </div>
+        </div>
+        {% endfor %} -->
+        <table class="table">
+            <thead>
+                <tr class="text-warning">
+                    <th scope="col">Country</th>
+                    <th scope="col">NewConfirmed</th>
+                    <th scope="col">Total Confirmed</th>
+                    <th scope="col">TotalDeaths</th>
+                    <th scope="col">TotalRecovered</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for response in country_results %}
+
+                <tr>
+                    <th scope="col">{{response.Country}}</th>
+                    <th scope="row">{{response.NewConfirmed}}</th>
+                    <td>{{response.TotalConfirmed}}</td>
+                    <td>{{response.TotalDeaths}}</td>
+                    <td>{{response.TotalRecovered}}</td>
+                </tr>
+                {% endfor %}
+
+            </tbody>
+        </table>
+
+    </div>
+</div>
+<ul>
+
+</ul>
 </div>
 
 

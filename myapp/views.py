@@ -4,7 +4,11 @@ import requests
 # Create your views here.
 def index(request):
     countries= requests.get('https://api.covid19api.com/countries').json()
-    results= requests.get('https://api.covid19api.com/summary').json()['Global']
+    summarydata =requests.get('https://api.covid19api.com/summary')
+    global_results= summarydata.json()['Global']
+    country_results= summarydata.json()['Countries']
+
+
     response= requests.get('https://api.covid19api.com/').json()
 
 
@@ -12,7 +16,8 @@ def index(request):
 
     params = {
         'countries':countries,
-        'results':results,
+        'global_results':global_results,
+        'country_results':country_results,
         'response':response
     }
     return render(request, 'index.html',params)
@@ -24,3 +29,11 @@ def sports(request):
         'data':data
     }
     return render(request,'sports.html',params)
+
+# def countrydata(request,country):
+#     summarydata =requests.get('https://api.covid19api.com/summary')
+
+#     country= summarydata.json()['Countries']['Count']
+
+#     country = country.country
+#     return render(request,'country.html',country)
