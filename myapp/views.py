@@ -4,13 +4,16 @@ import requests
 # Create your views here.
 def index(request):
     countries= requests.get('https://api.covid19api.com/countries').json()
-    summary= requests.get('https://api.covid19api.com/summary').json()
+    results= requests.get('https://api.covid19api.com/summary').json()['Global']
+    response= requests.get('https://api.covid19api.com/').json()
 
-    # print(summary)
+
+    # print(results)
 
     params = {
         'countries':countries,
-        'summary':summary
+        'results':results,
+        'response':response
     }
     return render(request, 'index.html',params)
 
